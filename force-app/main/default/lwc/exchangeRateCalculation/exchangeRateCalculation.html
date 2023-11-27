@@ -1,0 +1,61 @@
+<template>
+    <div >
+    <lightning-card title="Exchange Rate Calculation in LWC" icon-name="standard:currency" >
+
+        <div class="slds-var-p-around_large formatfile">
+            <!--Input Amount -->
+            <lightning-input
+            label="Enter Amount"
+            onchange={changeHandler}
+            name="amount"
+            ></lightning-input>
+        </div>
+        <div class="slds-var-p-around_large formatfile">
+            <!--From Currency  and To Currency-->
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <lightning-combobox
+                            name="fromcurr"
+                            label="From Currency"
+                            options={currencyoptions}
+                            onchange={changeHandler}
+                     ></lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox
+                            name="tocurr"
+                            label="To Currency"
+                            options={currencyoptions}
+                            onchange={changeHandler}
+             ></lightning-combobox>
+                </div>
+              </div>
+
+        </div>
+        <div class="slds-var-p-around_large formatfile">
+            <lightning-button 
+                    variant="success" 
+                    label="Exchange Rate" 
+                    onclick={handleClick} 
+                    class="slds-m-left_x-small"
+            ></lightning-button>
+    </div>
+        
+        <template lwc:if={showOutput}>
+        <div class="slds-var-p-around_large formatfile">
+            <!--Output -->
+            <p style="font-size: large; "><b>Converted Exchange Rate Value : </b> </p>
+            <p style="font-size: large; color:red;">
+                <lightning-formatted-number 
+                        value={convertedvalue} 
+                        format-style="currency" 
+                        currency-code={toCurrency}
+                        currency-display-as="name"
+                        
+                ></lightning-formatted-number>
+            </p>
+        </div>
+    </template>
+    </lightning-card>
+</div>
+</template>

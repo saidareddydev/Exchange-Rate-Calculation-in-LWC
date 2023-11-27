@@ -1,7 +1,8 @@
 .formatfile{
     display: 50%;
     justify-content: center;
-    background-color: whitesmoke;
+    text-justify: auto;
+    background-color: aquamarine;
     text-align: center;
    
 }
